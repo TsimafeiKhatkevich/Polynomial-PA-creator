@@ -1,10 +1,13 @@
-#include <iostream>
+#include "common_lib.h"
 
-using namespace std;
+int main(int argc, const char* argv[]) {
+    TModelConfig cfg;
+    cfg.ParseFromFile(argv[1]);
+    std::ofstream output(argv[2]);
 
-int main()
-{
-    cout << "Hello World!" << endl;
+    // TODO: main staff
+
+    output.close();
+
     return 0;
 }
-
