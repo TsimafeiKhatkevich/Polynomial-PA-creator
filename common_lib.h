@@ -68,12 +68,12 @@ namespace NMath {
         dist.reset();
 
         const double randReal = dist(generator);
-        return cdf.lower_bound(randReal);
+        return cdf.lower_bound(randReal)->second;
     }
 
     inline size_t GetRandomIndex(size_t max) {
         static std::random_device generator;
-        static std::uniform_int_distribution<size_t> dist(0, max);
+        static std::uniform_int_distribution<size_t> dist(0, max - 1);
         dist.reset();
         return dist(generator);
     }
