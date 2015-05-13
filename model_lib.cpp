@@ -64,6 +64,7 @@ TPolynomialModelGenerator::TPolynomialModelGenerator(const TModelConfig& cfg)
     // Init CDF
     NMath::TCachedBinomialCalcer binomCalcer;
     const uint32_t p = Cfg.OutDegree / 2;
+    double totalValue = 0.0;
 
     for (uint32_t k = 0; k <= p; ++k) {
         const double firstMult = binomCalcer.Calc(p, k) * NMath::Power(Cfg.Beta, k);
@@ -71,7 +72,12 @@ TPolynomialModelGenerator::TPolynomialModelGenerator(const TModelConfig& cfg)
             const double secondMult = binomCalcer.Calc(p - k, l - k)
                     * NMath::Power(Cfg.Alpha, l - k)
                     * NMath::Power(Cfg.Delta, p - l);
-            CDF[firstMult * secondMult] = NMath::TIntPair(k, 2 * l);
+
+            if (firstMult * secondMult == 0.0) {
+                continue;
+            }
+            totalValue += firstMult * secondMult;
+            CDF[totalValue] = NMath::TIntPair(k, 2 * l);
         }
     }
 }

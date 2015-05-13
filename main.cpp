@@ -8,7 +8,8 @@ int main(int argc, const char* argv[]) {
 
     TPolynomialModelGenerator modelGenerator(cfg);
 
-    while (modelGenerator.TryNextStep()) {}
+    while (modelGenerator.TryNextStep()) {
+    }
 
     if (argc == 2) {
         modelGenerator.WriteEdges(std::cout);

@@ -73,7 +73,7 @@ namespace NMath {
 
     inline size_t GetRandomIndex(size_t max) {
         static std::random_device generator;
-        static std::uniform_int_distribution<size_t> dist(0, max - 1);
+        std::uniform_int_distribution<size_t> dist(0, max - 1);
         dist.reset();
         return dist(generator);
     }

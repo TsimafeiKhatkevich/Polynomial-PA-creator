@@ -35,6 +35,6 @@ private:
     const TModelConfig Cfg;
     std::map<double, NMath::TIntPair> CDF;
 
-    size_t NVertices;
-    std::vector<TEdge> EdgeList;
+    size_t NVertices = 0;
+    std::vector<TEdge> EdgeList = {};
 };
