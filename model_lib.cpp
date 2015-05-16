@@ -100,15 +100,13 @@ bool TPolynomialModelGenerator::TryNextStep() {
         const size_t edgeInd = NMath::GetRandomIndex(curSize);
         EdgeList.push_back(TEdge(NVertices, EdgeList[edgeInd].second));
     }
-
-    ++NVertices;
-
     // sampling m - l
     for (uint32_t i = 0; i < Cfg.OutDegree - sampledPair.second; ++i) {
-        const size_t vInd = NMath::GetRandomIndex(NVertices);
-        EdgeList.push_back(TEdge(NVertices - 1, vInd));
+        const size_t edgeInd = NMath::GetRandomIndex(curSize);
+        EdgeList.push_back(TEdge(NVertices, EdgeList[edgeInd].first));
     }
 
+    ++NVertices;
     return true;
 }
 
